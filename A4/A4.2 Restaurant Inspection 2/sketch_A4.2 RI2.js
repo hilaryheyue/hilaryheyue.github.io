@@ -1,6 +1,6 @@
-var mCuisine = {"Chinese": 0, "American": 0, "Pizza": 0};
-var bCuisine = {"Chinese": 0, "American": 0, "Pizza": 0}
-var qCuisine = {"Chinese": 0, "American": 0, "Pizza": 0}
+var mCuisine = {"Chinese": 0, "American": 0, "Pizza": 0, "Italian":0, "Cafe/Coffee/Tea": 0}
+var bCuisine = {"Chinese": 0, "American": 0, "Pizza": 0, "Italian":0, "Cafe/Coffee/Tea": 0}
+var qCuisine = {"Chinese": 0, "American": 0, "Pizza": 0, "Italian":0, "Cafe/Coffee/Tea": 0}
 var mSum = 0;
 var bSum = 0;
 var qSum = 0;
@@ -20,14 +20,14 @@ function draw() {
 	background(255);
 	var startX = marginx;
     var startY = marginy*5;
-	var cuisines = ["Chinese", "American", "Pizza"];
+	var cuisines = Object.keys(mCuisine);
 	var diameter = 200;
 	var marginx = 20
 	var marginy = 20;
 	// colors for different grades
-	var colorsR = [206, 178, 255, 255, 109];
-    var colorsG = [207, 178, 251, 246, 110];
-    var colorsB = [255, 175, 232, 206, 178];
+	var colorsR = [206, 178, 255, 255, 109, 150];
+    var colorsG = [207, 178, 251, 246, 110, 150];
+    var colorsB = [255, 175, 232, 206, 178, 150];
 
     var mDiameter = diameter;
     var bDiameter = diameter * bSum / mSum;
@@ -73,9 +73,9 @@ function draw() {
 function loadData() {
 	var boros = table.getColumn("BORO");
 	var cuisine = table.getColumn("CUISINE DESCRIPTION");
-
+	allCuisines = Object.keys(mCuisine);
 	for (var i = 0; i < boros.length; i++) {
-		if (cuisine[i] == "Chinese" || cuisine[i] == "Pizza" || cuisine[i] == "American") {
+		if (allCuisines.includes(cuisine[i])) {
 			if (boros[i].includes("MANHATTAN")) {
 				mCuisine[cuisine[i]] += 1;
 				mSum += 1;
@@ -86,7 +86,8 @@ function loadData() {
 				qCuisine[cuisine[i]] += 1;
 				qSum += 1;
 			}
-		}
+		}	
 	}
 	sum = mSum + bSum + qSum;
+	console.log(mCuisine);
 }
