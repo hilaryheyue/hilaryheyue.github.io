@@ -88,6 +88,7 @@ function setup() {
     textSize(10);
     //line(offset, indexHeight, offset + (x[0].length + 11) * lengthPerMonth, indexHeight);
     //line(offset, indexHeight, offset, indexHeight - 400);
+    fill(0);
     line(offset + 14 * lengthPerMonth, indexHeight, offset + 14 * lengthPerMonth, indexHeight - 5);
     text('1995', offset + 14 * lengthPerMonth - textWidth('1995') / 2, indexHeight + 12);
     line(offset + 263 * lengthPerMonth, indexHeight, offset + 263 * lengthPerMonth, indexHeight - 5);
